@@ -17,7 +17,7 @@ public class TipoContenedorRest {
 
 	@Autowired
 	TipoContenedorService tipoContenedorService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<TipoContenedor>> listar() {
 		List<TipoContenedor> tiposContenedor = tipoContenedorService.listar();

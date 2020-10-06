@@ -9,17 +9,17 @@ import javax.persistence.Embeddable;
 public class ProyeccionRpoId implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@Column(name="id_proyeccion")
+
+	@Column(name = "id_proyeccion")
 	private Long idProyeccion;
-	
-	@Column(name="item")
+
+	@Column(name = "item")
 	private Integer item;
-	
+
 	public ProyeccionRpoId() {
 
 	}
-	
+
 	public ProyeccionRpoId(Long idProyeccion, Integer item) {
 		this.idProyeccion = idProyeccion;
 		this.item = item;
@@ -83,5 +83,5 @@ public class ProyeccionRpoId implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }

@@ -17,7 +17,7 @@ public class LineaRest {
 
 	@Autowired
 	LineaService lineaService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Linea>> listar() {
 		List<Linea> lineas = lineaService.listar();

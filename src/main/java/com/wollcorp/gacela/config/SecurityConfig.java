@@ -20,10 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
+
 	@Autowired
 	private RequestFilter requestFilter;
-	
 
 	@Autowired
 	private EntryPoint entryPoint;
@@ -46,25 +45,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf()
-			.disable()
-			.authorizeRequests()
-			.antMatchers(HttpMethod.POST, "/login")
-			.permitAll()
-			.anyRequest()
-			.authenticated()
-			.and()
-			.exceptionHandling()
-			.authenticationEntryPoint(entryPoint)
-			.and()
-			.sessionManagement()
-			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-			;
-			
-			
+		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll().anyRequest()
+				.authenticated().and().exceptionHandling().authenticationEntryPoint(entryPoint).and()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		;
 
-			// Add a filter to validate the tokens with every request
-			http.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
+		// Add a filter to validate the tokens with every request
+		http.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 
 }

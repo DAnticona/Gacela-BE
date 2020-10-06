@@ -17,7 +17,7 @@ public class ServicioRest {
 
 	@Autowired
 	ServicioService servicioService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Servicio>> obtenerServicios() {
 		List<Servicio> servicios = servicioService.listar();

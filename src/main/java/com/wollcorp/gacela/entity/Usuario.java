@@ -41,11 +41,11 @@ public class Usuario extends Persona implements Serializable {
 
 	@Column(name = "fe_modi")
 	private LocalDateTime feModi;
-	
+
 	public Usuario() {
-		
+
 	}
-	
+
 	public Usuario(String usuario) {
 		this.usuario = usuario;
 	}

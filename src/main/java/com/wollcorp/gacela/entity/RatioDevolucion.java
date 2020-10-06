@@ -1,23 +1,29 @@
 package com.wollcorp.gacela.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.EntityListeners;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 @Entity
 @Table(name = "ratio_devolucion")
+@EntityListeners(AuditingEntityListener.class)
 public class RatioDevolucion implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_ratio")
 	private Integer idRatio;
 
@@ -29,18 +35,32 @@ public class RatioDevolucion implements Serializable {
 
 	@Column(name = "ratio_4sh")
 	private Integer ratio4sh;
+	
+	@Column(name = "fe_ratio")
+	private LocalDate feRatio;
 
 	@Column(name = "us_crea")
+	@CreatedBy
 	private String usCrea;
 
 	@Column(name = "us_modi")
+	@LastModifiedBy
 	private String usModi;
 
 	@Column(name = "fe_crea")
+	@CreatedDate
 	private LocalDateTime feCrea;
 
 	@Column(name = "fe_modi")
+	@LastModifiedDate
 	private LocalDateTime feModi;
+
+	public RatioDevolucion() {
+	}
+
+	public RatioDevolucion(Integer idRatio) {
+		this.idRatio = idRatio;
+	}
 
 	/**
 	 * @return the idRatio
@@ -99,6 +119,20 @@ public class RatioDevolucion implements Serializable {
 	}
 
 	/**
+	 * @return the feRatio
+	 */
+	public LocalDate getFeRatio() {
+		return feRatio;
+	}
+
+	/**
+	 * @param feRatio the feRatio to set
+	 */
+	public void setFeRatio(LocalDate feRatio) {
+		this.feRatio = feRatio;
+	}
+
+	/**
 	 * @return the usCrea
 	 */
 	public String getUsCrea() {
@@ -152,6 +186,13 @@ public class RatioDevolucion implements Serializable {
 	 */
 	public void setFeModi(LocalDateTime feModi) {
 		this.feModi = feModi;
+	}
+
+	@Override
+	public String toString() {
+		return "RatioDevolucion [idRatio=" + idRatio + ", ratio2sd=" + ratio2sd + ", ratio4sd=" + ratio4sd
+				+ ", ratio4sh=" + ratio4sh + ", feRatio=" + feRatio + ", usCrea=" + usCrea + ", usModi=" + usModi
+				+ ", feCrea=" + feCrea + ", feModi=" + feModi + "]";
 	}
 
 }

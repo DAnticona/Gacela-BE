@@ -14,15 +14,15 @@ import com.wollcorp.gacela.service.UsuarioService;
 @RestController
 @RequestMapping("/usuarios")
 public class UsuariosRest {
-	
-	 @Autowired
-	 UsuarioService usuarioService;
+
+	@Autowired
+	UsuarioService usuarioService;
 
 	@GetMapping
 	public ResponseEntity<List<Usuario>> obtenerUsuarios() {
-		
+
 		List<Usuario> usuarios = usuarioService.listar();
-		
+
 		return ResponseEntity.ok(usuarios);
 	}
 }

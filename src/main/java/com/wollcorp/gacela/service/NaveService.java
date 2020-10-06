@@ -13,20 +13,24 @@ public class NaveService {
 
 	@Autowired
 	NaveDao naveDao;
-	
+
 	public List<Nave> listar() {
 		return naveDao.findAll();
 	}
-	
-	public void guardar(Nave nave) {
-		naveDao.save(nave);
+
+	public Nave guardar(Nave nave) {
+		return naveDao.save(nave);
 	}
-	
+
 	public void eliminar(Nave nave) {
 		naveDao.delete(nave);
 	}
-	
+
 	public Nave encontrarPorId(Nave nave) {
 		return naveDao.findById(nave.getIdNave()).orElse(null);
+	}
+	
+	public Nave encontrarPorCodigo(Nave nave) {
+		return naveDao.findByCodigo(nave.getCodigo());
 	}
 }

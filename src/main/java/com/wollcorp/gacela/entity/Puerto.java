@@ -5,13 +5,21 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 @Entity
 @Table(name = "puerto")
+@EntityListeners(AuditingEntityListener.class)
 public class Puerto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,16 +41,23 @@ public class Puerto implements Serializable {
 	@Column(name = "fg_acti")
 	private String fgActi;
 
+	@Column(name = "alias1")
+	private String alias1;
+
 	@Column(name = "us_crea")
+	@CreatedBy
 	private String usCrea;
 
 	@Column(name = "us_modi")
+	@LastModifiedBy
 	private String usModi;
 
 	@Column(name = "fe_crea")
+	@CreatedDate
 	private LocalDateTime feCrea;
 
 	@Column(name = "fe_modi")
+	@LastModifiedDate
 	private LocalDateTime feModi;
 
 	public Puerto() {
@@ -51,6 +66,11 @@ public class Puerto implements Serializable {
 
 	public Puerto(Integer idPuerto) {
 		this.idPuerto = idPuerto;
+	}
+
+	public Puerto(String coIso, String coSol) {
+		this.coIso = coIso;
+		this.coSol = coSol;
 	}
 
 	/**
@@ -179,11 +199,24 @@ public class Puerto implements Serializable {
 		this.feModi = feModi;
 	}
 
+	/**
+	 * @return the alias1
+	 */
+	public String getAlias1() {
+		return alias1;
+	}
+
+	/**
+	 * @param alias1 the alias1 to set
+	 */
+	public void setAlias1(String alias1) {
+		this.alias1 = alias1;
+	}
+
 	@Override
 	public String toString() {
 		return "Puerto [idPuerto=" + idPuerto + ", nombre=" + nombre + ", coSol=" + coSol + ", coIso=" + coIso
-				+ ", fgActi=" + fgActi + ", usCrea=" + usCrea + ", usModi=" + usModi + ", feCrea=" + feCrea
-				+ ", feModi=" + feModi + "]";
+				+ ", fgActi=" + fgActi + ", alias1=" + alias1 + ", usCrea=" + usCrea + ", usModi=" + usModi
+				+ ", feCrea=" + feCrea + ", feModi=" + feModi + "]";
 	}
-
 }

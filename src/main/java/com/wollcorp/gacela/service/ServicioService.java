@@ -13,19 +13,19 @@ public class ServicioService {
 
 	@Autowired
 	ServicioDao servicioDao;
-	
+
 	public List<Servicio> listar() {
 		return servicioDao.findAll();
 	}
-	
+
 	public void guardar(Servicio servicio) {
 		servicioDao.save(servicio);
 	}
-	
+
 	public void eliminar(Servicio servicio) {
 		servicioDao.delete(servicio);
 	}
-	
+
 	public Servicio encontrarPorId(Servicio servicio) {
 		return servicioDao.findById(servicio.getIdServicio()).orElse(null);
 	}

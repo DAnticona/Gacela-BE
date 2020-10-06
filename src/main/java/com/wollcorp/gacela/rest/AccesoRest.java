@@ -17,11 +17,11 @@ public class AccesoRest {
 
 	@Autowired
 	AccesoService accesoService;
-	
+
 	@GetMapping
 	private ResponseEntity<List<Acceso>> listar() {
 		List<Acceso> accesos = accesoService.listar();
-		
+
 		return ResponseEntity.ok(accesos);
 	}
 }

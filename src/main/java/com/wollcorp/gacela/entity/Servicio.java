@@ -2,13 +2,19 @@ package com.wollcorp.gacela.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "servicio")
@@ -41,6 +47,19 @@ public class Servicio implements Serializable {
 
 	@Column(name = "fe_modi")
 	private LocalDateTime feModi;
+
+	@ManyToMany
+	@JoinTable(name = "asig_puerto_servicio", joinColumns = @JoinColumn(name = "id_servicio"), inverseJoinColumns = @JoinColumn(name = "id_puerto"))
+	@JsonIgnore
+	private List<Puerto> puertos;
+
+	public Servicio() {
+
+	}
+
+	public Servicio(Integer idServicio) {
+		this.idServicio = idServicio;
+	}
 
 	/**
 	 * @return the idServicio
@@ -152,6 +171,20 @@ public class Servicio implements Serializable {
 	 */
 	public void setFeModi(LocalDateTime feModi) {
 		this.feModi = feModi;
+	}
+
+	/**
+	 * @return the puertos
+	 */
+	public List<Puerto> getPuertos() {
+		return puertos;
+	}
+
+	/**
+	 * @param puertos the puertos to set
+	 */
+	public void setPuertos(List<Puerto> puertos) {
+		this.puertos = puertos;
 	}
 
 	@Override

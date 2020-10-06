@@ -7,9 +7,9 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class SubmenuId implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Column(name = "id_menu")
 	private Integer idMenu;
 

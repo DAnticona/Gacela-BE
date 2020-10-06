@@ -14,13 +14,13 @@ import com.wollcorp.gacela.service.MenuService;
 @RestController
 @RequestMapping("/menus")
 public class MenuRest {
-	
+
 	@Autowired
 	MenuService menuService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Menu>> obtenerMenus() {
-		
+
 		List<Menu> menus = menuService.listar();
 		return ResponseEntity.ok(menus);
 	}

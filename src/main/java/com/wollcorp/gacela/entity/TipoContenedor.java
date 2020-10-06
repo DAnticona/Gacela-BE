@@ -22,10 +22,13 @@ public class TipoContenedor implements Serializable {
 	private Integer idTicon;
 
 	@Column(name = "co_iso")
-	private String co_iso;
+	private String coIso;
+
+	@Column(name = "co_iso2")
+	private String coIso2;
 
 	@Column(name = "co_sol")
-	private String co_sol;
+	private String coSol;
 
 	@Column(name = "us_crea")
 	private String usCrea;
@@ -38,6 +41,20 @@ public class TipoContenedor implements Serializable {
 
 	@Column(name = "fe_modi")
 	private LocalDateTime feModi;
+
+	/**
+	 * @return the coIso2
+	 */
+	public String getCoIso2() {
+		return coIso2;
+	}
+
+	/**
+	 * @param coIso2 the coIso2 to set
+	 */
+	public void setCoIso2(String coIso2) {
+		this.coIso2 = coIso2;
+	}
 
 	/**
 	 * @return the idTicon
@@ -54,31 +71,31 @@ public class TipoContenedor implements Serializable {
 	}
 
 	/**
-	 * @return the co_iso
+	 * @return the coIso
 	 */
-	public String getCo_iso() {
-		return co_iso;
+	public String getCoIso() {
+		return coIso;
 	}
 
 	/**
-	 * @param co_iso the co_iso to set
+	 * @param coIso the co_iso to set
 	 */
-	public void setCo_iso(String co_iso) {
-		this.co_iso = co_iso;
+	public void setCoIso(String coIso) {
+		this.coIso = coIso;
 	}
 
 	/**
-	 * @return the co_sol
+	 * @return the coSol
 	 */
-	public String getCo_sol() {
-		return co_sol;
+	public String getCoSol() {
+		return coSol;
 	}
 
 	/**
-	 * @param co_sol the co_sol to set
+	 * @param co_sol the coSol to set
 	 */
-	public void setCo_sol(String co_sol) {
-		this.co_sol = co_sol;
+	public void setCoSol(String coSol) {
+		this.coSol = coSol;
 	}
 
 	/**
@@ -139,8 +156,8 @@ public class TipoContenedor implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TipoContenedor [idTicon=" + idTicon + ", co_iso=" + co_iso + ", co_sol=" + co_sol + ", usCrea=" + usCrea
-				+ ", usModi=" + usModi + ", feCrea=" + feCrea + ", feModi=" + feModi + "]";
+		return "TipoContenedor [idTicon=" + idTicon + ", coIso=" + coIso + ", coIso2=" + coIso2 + ", coSol=" + coSol
+				+ ", usCrea=" + usCrea + ", usModi=" + usModi + ", feCrea=" + feCrea + ", feModi=" + feModi + "]";
 	}
 
 }

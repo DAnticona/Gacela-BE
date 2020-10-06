@@ -7,16 +7,24 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "mtc1r999")
+@EntityListeners(AuditingEntityListener.class)
 public class Mtc1r999 implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -39,20 +47,41 @@ public class Mtc1r999 implements Serializable {
 	private LocalDate feVcto;
 
 	@Column(name = "us_crea")
+	@CreatedBy
 	private String usCrea;
 
 	@Column(name = "us_modi")
+	@LastModifiedBy
 	private String usModi;
 
 	@Column(name = "fe_crea")
+	@CreatedDate
 	private LocalDateTime feCrea;
 
 	@Column(name = "fe_modi")
+	@LastModifiedDate
 	private LocalDateTime feModi;
 
 	@OneToMany(mappedBy = "mtc1r999")
 	@JsonManagedReference
 	private List<Mtc1r999Detalle> detalle;
+
+	public Mtc1r999() {
+	}
+
+	public Mtc1r999(Long idMtc1r999) {
+		this.idMtc1r999 = idMtc1r999;
+	}
+
+	public Mtc1r999(String fgActi) {
+		this.fgActi = fgActi;
+	}
+
+	public Mtc1r999(String nombre, LocalDate feCarga, LocalDate feVcto) {
+		this.nombre = nombre;
+		this.feCarga = feCarga;
+		this.feVcto = feVcto;
+	}
 
 	/**
 	 * @return the idMtc1r999

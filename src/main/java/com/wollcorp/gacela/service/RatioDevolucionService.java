@@ -1,5 +1,6 @@
 package com.wollcorp.gacela.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +18,16 @@ public class RatioDevolucionService {
 	public List<RatioDevolucion> listar() {
 		return ratioDevolucionDao.findAll();
 	}
-	
-	public void guardar(RatioDevolucion ratio) {
-		ratioDevolucionDao.save(ratio);
+
+	public RatioDevolucion guardar(RatioDevolucion ratio) {
+		ratio.setFeRatio(LocalDate.now());
+		return ratioDevolucionDao.save(ratio);
 	}
-	
+
 	public void eliminar(RatioDevolucion ratio) {
 		ratioDevolucionDao.delete(ratio);
 	}
-	
+
 	public RatioDevolucion encontrarPorId(RatioDevolucion ratio) {
 		return ratioDevolucionDao.findById(ratio.getIdRatio()).orElse(null);
 	}

@@ -12,19 +12,19 @@ import com.wollcorp.gacela.entity.TipoContenedor;
 public class TipoContenedorService {
 	@Autowired
 	TipoContenedorDao tipoContenedorDao;
-	
+
 	public List<TipoContenedor> listar() {
 		return tipoContenedorDao.findAll();
 	}
-	
+
 	public void guardar(TipoContenedor tipo) {
 		tipoContenedorDao.save(tipo);
 	}
-	
+
 	public void eliminar(TipoContenedor tipo) {
 		tipoContenedorDao.delete(tipo);
 	}
-	
+
 	public TipoContenedor encontrarPorId(TipoContenedor tipo) {
 		return tipoContenedorDao.findById(tipo.getIdTicon()).orElse(null);
 	}

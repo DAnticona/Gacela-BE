@@ -1,7 +1,7 @@
 package com.wollcorp.gacela.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -39,76 +39,25 @@ public class Mtc1r999Detalle implements Serializable {
 	private String viaje;
 
 	@Column(name = "vsl_voy_s")
-	private String vsl_voy_s;
+	private String vslVoyS;
 
 	@Column(name = "booking_nro")
-	private String bookingNro;
-
-	@Column(name = "rvs")
-	private String rvs;
+	private String bookingNo;
 
 	@Column(name = "qty")
-	private int qty;
+	private Integer qty;
 
 	@Column(name = "pick")
-	private int pick;
-
-	@Column(name = "balance")
-	private int balance;
+	private Integer pick;
 
 	@Column(name = "mode")
 	private String mode;
 
-	@Column(name = "mta")
-	private String mta;
-
 	@Column(name = "tpe")
 	private String tpe;
 
-	@Column(name = "rct")
-	private String rct;
-
-	@Column(name = "pol")
-	private String pol;
-
-	@Column(name = "pod")
-	private String pod;
-
-	@Column(name = "dly")
-	private String dly;
-
-	@Column(name = "release")
-	private Date release;
-
 	@Column(name = "cut_off")
-	private Date cutOff;
-
-	@Column(name = "dry_use")
-	private String dryUse;
-
-	@Column(name = "pre_cool")
-	private String pre_cool;
-
-	@Column(name = "temp")
-	private String temp;
-
-	@Column(name = "vent")
-	private int vent;
-
-	@Column(name = "commodity")
-	private String commodity;
-
-	@Column(name = "special_handling")
-	private String specialHandling;
-
-	@Column(name = "customer_ac")
-	private String customerAc;
-
-	@Column(name = "customer_name")
-	private String customerName;
-
-	@Column(name = "remark")
-	private String remark;
+	private LocalDate cutOff;
 
 	/**
 	 * @return the mtc1r999DetalleId
@@ -181,87 +130,59 @@ public class Mtc1r999Detalle implements Serializable {
 	}
 
 	/**
-	 * @return the vsl_voy_s
+	 * @return the vslVoyS
 	 */
-	public String getVsl_voy_s() {
-		return vsl_voy_s;
+	public String getVslVoyS() {
+		return vslVoyS;
 	}
 
 	/**
-	 * @param vsl_voy_s the vsl_voy_s to set
+	 * @param vslVoyS the vslVoyS to set
 	 */
-	public void setVsl_voy_s(String vsl_voy_s) {
-		this.vsl_voy_s = vsl_voy_s;
+	public void setVslVoyS(String vslVoyS) {
+		this.vslVoyS = vslVoyS;
 	}
 
 	/**
-	 * @return the bookingNro
+	 * @return the bookingNo
 	 */
-	public String getBookingNro() {
-		return bookingNro;
+	public String getBookingNo() {
+		return bookingNo;
 	}
 
 	/**
-	 * @param bookingNro the bookingNro to set
+	 * @param bookingNo the bookingNo to set
 	 */
-	public void setBookingNro(String bookingNro) {
-		this.bookingNro = bookingNro;
-	}
-
-	/**
-	 * @return the rvs
-	 */
-	public String getRvs() {
-		return rvs;
-	}
-
-	/**
-	 * @param rvs the rvs to set
-	 */
-	public void setRvs(String rvs) {
-		this.rvs = rvs;
+	public void setBookingNo(String bookingNo) {
+		this.bookingNo = bookingNo;
 	}
 
 	/**
 	 * @return the qty
 	 */
-	public int getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
 	/**
 	 * @param qty the qty to set
 	 */
-	public void setQty(int qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
 	/**
 	 * @return the pick
 	 */
-	public int getPick() {
+	public Integer getPick() {
 		return pick;
 	}
 
 	/**
 	 * @param pick the pick to set
 	 */
-	public void setPick(int pick) {
+	public void setPick(Integer pick) {
 		this.pick = pick;
-	}
-
-	/**
-	 * @return the balance
-	 */
-	public int getBalance() {
-		return balance;
-	}
-
-	/**
-	 * @param balance the balance to set
-	 */
-	public void setBalance(int balance) {
-		this.balance = balance;
 	}
 
 	/**
@@ -279,20 +200,6 @@ public class Mtc1r999Detalle implements Serializable {
 	}
 
 	/**
-	 * @return the mta
-	 */
-	public String getMta() {
-		return mta;
-	}
-
-	/**
-	 * @param mta the mta to set
-	 */
-	public void setMta(String mta) {
-		this.mta = mta;
-	}
-
-	/**
 	 * @return the tpe
 	 */
 	public String getTpe() {
@@ -307,225 +214,23 @@ public class Mtc1r999Detalle implements Serializable {
 	}
 
 	/**
-	 * @return the rct
-	 */
-	public String getRct() {
-		return rct;
-	}
-
-	/**
-	 * @param rct the rct to set
-	 */
-	public void setRct(String rct) {
-		this.rct = rct;
-	}
-
-	/**
-	 * @return the pol
-	 */
-	public String getPol() {
-		return pol;
-	}
-
-	/**
-	 * @param pol the pol to set
-	 */
-	public void setPol(String pol) {
-		this.pol = pol;
-	}
-
-	/**
-	 * @return the pod
-	 */
-	public String getPod() {
-		return pod;
-	}
-
-	/**
-	 * @param pod the pod to set
-	 */
-	public void setPod(String pod) {
-		this.pod = pod;
-	}
-
-	/**
-	 * @return the dly
-	 */
-	public String getDly() {
-		return dly;
-	}
-
-	/**
-	 * @param dly the dly to set
-	 */
-	public void setDly(String dly) {
-		this.dly = dly;
-	}
-
-	/**
-	 * @return the release
-	 */
-	public Date getRelease() {
-		return release;
-	}
-
-	/**
-	 * @param release the release to set
-	 */
-	public void setRelease(Date release) {
-		this.release = release;
-	}
-
-	/**
 	 * @return the cutOff
 	 */
-	public Date getCutOff() {
+	public LocalDate getCutOff() {
 		return cutOff;
 	}
 
 	/**
 	 * @param cutOff the cutOff to set
 	 */
-	public void setCutOff(Date cutOff) {
+	public void setCutOff(LocalDate cutOff) {
 		this.cutOff = cutOff;
-	}
-
-	/**
-	 * @return the dryUse
-	 */
-	public String getDryUse() {
-		return dryUse;
-	}
-
-	/**
-	 * @param dryUse the dryUse to set
-	 */
-	public void setDryUse(String dryUse) {
-		this.dryUse = dryUse;
-	}
-
-	/**
-	 * @return the pre_cool
-	 */
-	public String getPre_cool() {
-		return pre_cool;
-	}
-
-	/**
-	 * @param pre_cool the pre_cool to set
-	 */
-	public void setPre_cool(String pre_cool) {
-		this.pre_cool = pre_cool;
-	}
-
-	/**
-	 * @return the temp
-	 */
-	public String getTemp() {
-		return temp;
-	}
-
-	/**
-	 * @param temp the temp to set
-	 */
-	public void setTemp(String temp) {
-		this.temp = temp;
-	}
-
-	/**
-	 * @return the vent
-	 */
-	public int getVent() {
-		return vent;
-	}
-
-	/**
-	 * @param vent the vent to set
-	 */
-	public void setVent(int vent) {
-		this.vent = vent;
-	}
-
-	/**
-	 * @return the commodity
-	 */
-	public String getCommodity() {
-		return commodity;
-	}
-
-	/**
-	 * @param commodity the commodity to set
-	 */
-	public void setCommodity(String commodity) {
-		this.commodity = commodity;
-	}
-
-	/**
-	 * @return the specialHandling
-	 */
-	public String getSpecialHandling() {
-		return specialHandling;
-	}
-
-	/**
-	 * @param specialHandling the specialHandling to set
-	 */
-	public void setSpecialHandling(String specialHandling) {
-		this.specialHandling = specialHandling;
-	}
-
-	/**
-	 * @return the customerAc
-	 */
-	public String getCustomerAc() {
-		return customerAc;
-	}
-
-	/**
-	 * @param customerAc the customerAc to set
-	 */
-	public void setCustomerAc(String customerAc) {
-		this.customerAc = customerAc;
-	}
-
-	/**
-	 * @return the customerName
-	 */
-	public String getCustomerName() {
-		return customerName;
-	}
-
-	/**
-	 * @param customerName the customerName to set
-	 */
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-
-	/**
-	 * @return the remark
-	 */
-	public String getRemark() {
-		return remark;
-	}
-
-	/**
-	 * @param remark the remark to set
-	 */
-	public void setRemark(String remark) {
-		this.remark = remark;
 	}
 
 	@Override
 	public String toString() {
 		return "Mtc1r999Detalle [mtc1r999DetalleId=" + mtc1r999DetalleId + ", mtc1r999=" + mtc1r999 + ", depot=" + depot
-				+ ", nave=" + nave + ", viaje=" + viaje + ", vsl_voy_s=" + vsl_voy_s + ", bookingNro=" + bookingNro
-				+ ", rvs=" + rvs + ", qty=" + qty + ", pick=" + pick + ", balance=" + balance + ", mode=" + mode
-				+ ", mta=" + mta + ", tpe=" + tpe + ", rct=" + rct + ", pol=" + pol + ", pod=" + pod + ", dly=" + dly
-				+ ", release=" + release + ", cutOff=" + cutOff + ", dryUse=" + dryUse + ", pre_cool=" + pre_cool
-				+ ", temp=" + temp + ", vent=" + vent + ", commodity=" + commodity + ", specialHandling="
-				+ specialHandling + ", customerAc=" + customerAc + ", customerName=" + customerName + ", remark="
-				+ remark + "]";
+				+ ", nave=" + nave + ", viaje=" + viaje + ", vslVoyS=" + vslVoyS + ", bookingNo=" + bookingNo + ", qty="
+				+ qty + ", pick=" + pick + ", mode=" + mode + ", tpe=" + tpe + ", cutOff=" + cutOff + "]";
 	}
-
 }

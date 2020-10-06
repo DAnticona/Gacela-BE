@@ -7,16 +7,24 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "proyeccion")
+@EntityListeners(AuditingEntityListener.class)
 public class Proyeccion implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,13 +35,19 @@ public class Proyeccion implements Serializable {
 	private Long idProyeccion;
 
 	@Column(name = "id_mtc1r999")
-	private Integer idMtc1r999;
+	private Long idMtc1r999;
+	
+	@Column(name="id_pro_ventas")
+	private Long idProVentas;
+	
+	@Column(name="id_pro_unificada")
+	private Long idProUnificada;
 
 	@Column(name = "fe_proyeccion")
 	private LocalDate feProyeccion;
 
-	@Column(name = "fg_ventas")
-	private String fgVentas;
+	@Column(name = "fg_tipo")
+	private String fgTipo;
 
 	@Column(name = "fg_acti")
 	private String fgActi;
@@ -144,15 +158,19 @@ public class Proyeccion implements Serializable {
 	private LocalDate feVcto;
 
 	@Column(name = "us_crea")
+	@CreatedBy
 	private String usCrea;
 
 	@Column(name = "us_modi")
+	@LastModifiedBy
 	private String usModi;
 
 	@Column(name = "fe_crea")
+	@CreatedDate
 	private LocalDateTime feCrea;
 
 	@Column(name = "fe_modi")
+	@LastModifiedDate
 	private LocalDateTime feModi;
 
 	@OneToMany(mappedBy = "proyeccion")
@@ -163,15 +181,22 @@ public class Proyeccion implements Serializable {
 	@JsonManagedReference
 	private List<ProyeccionRpo> rpo;
 
+	public Proyeccion() {
+	}
+
+	public Proyeccion(Long idProyeccion) {
+		this.idProyeccion = idProyeccion;
+	}
+
 	/**
-	 * @return the id_proyeccion
+	 * @return the idProyeccion
 	 */
 	public Long getIdProyeccion() {
 		return idProyeccion;
 	}
 
 	/**
-	 * @param id_proyeccion the id_proyeccion to set
+	 * @param idProyeccion the idProyeccion to set
 	 */
 	public void setIdProyeccion(Long idProyeccion) {
 		this.idProyeccion = idProyeccion;
@@ -180,15 +205,43 @@ public class Proyeccion implements Serializable {
 	/**
 	 * @return the idMtc1r999
 	 */
-	public Integer getIdMtc1r999() {
+	public Long getIdMtc1r999() {
 		return idMtc1r999;
 	}
 
 	/**
 	 * @param idMtc1r999 the idMtc1r999 to set
 	 */
-	public void setIdMtc1r999(Integer idMtc1r999) {
+	public void setIdMtc1r999(Long idMtc1r999) {
 		this.idMtc1r999 = idMtc1r999;
+	}
+
+	/**
+	 * @return the idProVentas
+	 */
+	public Long getIdProVentas() {
+		return idProVentas;
+	}
+
+	/**
+	 * @param idProVentas the idProVentas to set
+	 */
+	public void setIdProVentas(Long idProVentas) {
+		this.idProVentas = idProVentas;
+	}
+
+	/**
+	 * @return the idProUnificada
+	 */
+	public Long getIdProUnificada() {
+		return idProUnificada;
+	}
+
+	/**
+	 * @param idProUnificada the idProUnificada to set
+	 */
+	public void setIdProUnificada(Long idProUnificada) {
+		this.idProUnificada = idProUnificada;
 	}
 
 	/**
@@ -206,17 +259,17 @@ public class Proyeccion implements Serializable {
 	}
 
 	/**
-	 * @return the fgVentas
+	 * @return the fgTipo
 	 */
-	public String getFgVentas() {
-		return fgVentas;
+	public String getFgTipo() {
+		return fgTipo;
 	}
 
 	/**
-	 * @param fgVentas the fgVentas to set
+	 * @param fgTipo the fgTipo to set
 	 */
-	public void setFgVentas(String fgVentas) {
-		this.fgVentas = fgVentas;
+	public void setFgTipo(String fgTipo) {
+		this.fgTipo = fgTipo;
 	}
 
 	/**
@@ -809,20 +862,20 @@ public class Proyeccion implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Proyeccion [id_proyeccion=" + idProyeccion + ", idMtc1r999=" + idMtc1r999 + ", feProyeccion="
-				+ feProyeccion + ", fgVentas=" + fgVentas + ", fgActi=" + fgActi + ", ratio2sd=" + ratio2sd
-				+ ", ratio4sd=" + ratio4sd + ", ratio_4sh=" + ratio4sh + ", nuSemana=" + nuSemana + ", stock2sd="
-				+ stock2sd + ", stock4sd=" + stock4sd + ", stock4sh=" + stock4sh + ", to2sdNoFe=" + to2sdNoFe
-				+ ", to2sdNoFePick=" + to2sdNoFePick + ", to2sdFe=" + to2sdFe + ", to2sdFePick=" + to2sdFePick
-				+ ", to4sdNoFe=" + to4sdNoFe + ", to4sdNoFePick=" + to4sdNoFePick + ", to4sdFe=" + to4sdFe
-				+ ", to4sdFePick=" + to4sdFePick + ", to4shNoFe=" + to4shNoFe + ", to4shNoFePick=" + to4shNoFePick
-				+ ", to4shFe=" + to4shFe + ", to4shFePick=" + to4shFePick + ", to2sdBook=" + to2sdBook + ", to4sdBook="
-				+ to4sdBook + ", to4shBook=" + to4shBook + ", to2sdPick=" + to2sdPick + ", to4sdPick=" + to4sdPick
-				+ ", to4shPick=" + to4shPick + ", nuDiasHabiles=" + nuDiasHabiles + ", nuDiasRetorno=" + nuDiasRetorno
+		return "Proyeccion [idProyeccion=" + idProyeccion + ", idMtc1r999=" + idMtc1r999 + ", idProVentas="
+				+ idProVentas + ", idProUnificada=" + idProUnificada + ", feProyeccion=" + feProyeccion + ", fgTipo="
+				+ fgTipo + ", fgActi=" + fgActi + ", ratio2sd=" + ratio2sd + ", ratio4sd=" + ratio4sd + ", ratio4sh="
+				+ ratio4sh + ", nuSemana=" + nuSemana + ", stock2sd=" + stock2sd + ", stock4sd=" + stock4sd
+				+ ", stock4sh=" + stock4sh + ", to2sdNoFe=" + to2sdNoFe + ", to2sdNoFePick=" + to2sdNoFePick
+				+ ", to2sdFe=" + to2sdFe + ", to2sdFePick=" + to2sdFePick + ", to4sdNoFe=" + to4sdNoFe
+				+ ", to4sdNoFePick=" + to4sdNoFePick + ", to4sdFe=" + to4sdFe + ", to4sdFePick=" + to4sdFePick
+				+ ", to4shNoFe=" + to4shNoFe + ", to4shNoFePick=" + to4shNoFePick + ", to4shFe=" + to4shFe
+				+ ", to4shFePick=" + to4shFePick + ", to2sdBook=" + to2sdBook + ", to4sdBook=" + to4sdBook
+				+ ", to4shBook=" + to4shBook + ", to2sdPick=" + to2sdPick + ", to4sdPick=" + to4sdPick + ", to4shPick="
+				+ to4shPick + ", nuDiasHabiles=" + nuDiasHabiles + ", nuDiasRetorno=" + nuDiasRetorno
 				+ ", feEmptyReturn=" + feEmptyReturn + ", emptyRet2sd=" + emptyRet2sd + ", emptyRet4sd=" + emptyRet4sd
 				+ ", emptyRet4sh=" + emptyRet4sh + ", available2sd=" + available2sd + ", available4sd=" + available4sd
 				+ ", available4sh=" + available4sh + ", feVcto=" + feVcto + ", usCrea=" + usCrea + ", usModi=" + usModi
 				+ ", feCrea=" + feCrea + ", feModi=" + feModi + "]";
 	}
-
 }

@@ -10,22 +10,22 @@ import com.wollcorp.gacela.entity.Acceso;
 
 @Service
 public class AccesoService {
-	
+
 	@Autowired
 	private AccesoDao accesoDao;
-	
+
 	public List<Acceso> listar() {
 		return accesoDao.findAll();
 	}
-	
+
 	public void guardar(Acceso acceso) {
 		accesoDao.save(acceso);
 	}
-	
+
 	public void eliminar(Acceso acceso) {
 		accesoDao.delete(acceso);
 	}
-	
+
 	public Acceso encontrarPorId(Acceso acceso) {
 		return accesoDao.findById(acceso.getIdAcceso()).orElse(null);
 	}

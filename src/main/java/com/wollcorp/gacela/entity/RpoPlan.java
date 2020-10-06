@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,8 +14,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 @Entity
 @Table(name = "rpo_plan")
+@EntityListeners(AuditingEntityListener.class)
 public class RpoPlan implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -47,16 +55,27 @@ public class RpoPlan implements Serializable {
 	private String fgActi;
 
 	@Column(name = "us_crea")
+	@CreatedBy
 	private String usCrea;
 
 	@Column(name = "us_modi")
+	@LastModifiedBy
 	private String usModi;
 
 	@Column(name = "fe_crea")
+	@CreatedDate
 	private LocalDateTime feCrea;
 
 	@Column(name = "fe_modi")
+	@LastModifiedDate
 	private LocalDateTime feModi;
+
+	public RpoPlan() {
+	}
+
+	public RpoPlan(Long idRpo) {
+		this.idRpo = idRpo;
+	}
 
 	/**
 	 * @return the idRpo

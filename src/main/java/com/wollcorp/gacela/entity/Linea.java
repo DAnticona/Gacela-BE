@@ -48,6 +48,19 @@ public class Linea implements Serializable {
 	@Column(name = "fe_modi")
 	private LocalDateTime feModi;
 
+	public Linea() {
+
+	}
+
+	public Linea(Integer idLinea) {
+		this.idLinea = idLinea;
+	}
+
+	public Linea(String coIso, String coSol) {
+		this.coIso = coIso;
+		this.coSol = coSol;
+	}
+
 	/**
 	 * @return the idLinea
 	 */

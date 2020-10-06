@@ -21,7 +21,7 @@ public class EntryPoint implements AuthenticationEntryPoint, Serializable {
 			AuthenticationException authException) throws IOException, ServletException {
 
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
-		
+
 	}
 
 }

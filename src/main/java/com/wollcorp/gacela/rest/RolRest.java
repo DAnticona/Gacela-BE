@@ -14,10 +14,10 @@ import com.wollcorp.gacela.service.RolService;
 @RestController
 @RequestMapping("/roles")
 public class RolRest {
-	
+
 	@Autowired
 	RolService perfilService;
-	
+
 	@GetMapping
 	private ResponseEntity<List<Rol>> obtenerPerfiles() {
 		List<Rol> roles = perfilService.listar();

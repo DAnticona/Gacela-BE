@@ -10,22 +10,22 @@ import com.wollcorp.gacela.entity.Menu;
 
 @Service
 public class MenuService {
-	
+
 	@Autowired
 	MenuDao menuDao;
-	
+
 	public List<Menu> listar() {
 		return menuDao.findAll();
 	}
-	
+
 	public void guardar(Menu menu) {
 		menuDao.save(menu);
 	}
-	
+
 	public void eliminar(Menu menu) {
 		menuDao.delete(menu);
 	}
-	
+
 	public Menu encontrarPorId(Menu menu) {
 		return menuDao.findById(menu.getIdMenu()).orElse(null);
 	}

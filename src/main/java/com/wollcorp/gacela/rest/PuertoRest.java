@@ -17,7 +17,7 @@ public class PuertoRest {
 
 	@Autowired
 	PuertoService puertoService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Puerto>> listar() {
 		List<Puerto> puertos = puertoService.listar();

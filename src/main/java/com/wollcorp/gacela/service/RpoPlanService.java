@@ -12,19 +12,19 @@ import com.wollcorp.gacela.entity.RpoPlan;
 public class RpoPlanService {
 	@Autowired
 	RpoPlanDao rpoPlanDao;
-	
+
 	public List<RpoPlan> listar() {
 		return rpoPlanDao.findAll();
 	}
-	
-	public void guardar(RpoPlan rpo) {
-		rpoPlanDao.save(rpo);
+
+	public RpoPlan guardar(RpoPlan rpo) {
+		return rpoPlanDao.save(rpo);
 	}
-	
+
 	public void eliminar(RpoPlan rpo) {
 		rpoPlanDao.delete(rpo);
 	}
-	
+
 	public RpoPlan encontrarPorId(RpoPlan rpo) {
 		return rpoPlanDao.findById(rpo.getIdRpo()).orElse(null);
 	}

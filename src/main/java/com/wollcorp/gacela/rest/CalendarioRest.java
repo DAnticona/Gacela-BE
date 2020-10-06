@@ -17,10 +17,10 @@ public class CalendarioRest {
 
 	@Autowired
 	CalendarioService calendarioService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Calendario>> listar() {
+	public ResponseEntity<?> listar() {
 		List<Calendario> calendario = calendarioService.listar();
 		return ResponseEntity.ok(calendario);
-	}
+	} 
 }

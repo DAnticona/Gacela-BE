@@ -17,10 +17,10 @@ public class SubmenuRest {
 
 	@Autowired
 	SubmenuService submenuService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Submenu>> obtenerSubmenus() {
-		
+
 		List<Submenu> submenus = submenuService.listar();
 		return ResponseEntity.ok(submenus);
 	}

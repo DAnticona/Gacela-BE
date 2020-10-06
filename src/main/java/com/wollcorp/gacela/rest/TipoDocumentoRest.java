@@ -14,13 +14,13 @@ import com.wollcorp.gacela.service.TipoDocumentoService;
 @RestController
 @RequestMapping("/tipos-documento")
 public class TipoDocumentoRest {
-	
+
 	@Autowired
 	TipoDocumentoService tipoDocumentoService;
 
 	@GetMapping
 	public ResponseEntity<List<TipoDocumento>> obtenerTiposDocumento() {
-		
+
 		List<TipoDocumento> tiposDocumento = tipoDocumentoService.listar();
 		return ResponseEntity.ok(tiposDocumento);
 	}

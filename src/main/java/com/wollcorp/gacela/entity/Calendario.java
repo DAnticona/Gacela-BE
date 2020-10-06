@@ -55,6 +55,13 @@ public class Calendario implements Serializable {
 	@Column(name = "fe_modi")
 	private LocalDateTime feModi;
 
+	public Calendario() {
+	}
+
+	public Calendario(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
 	/**
 	 * @return the idCalendario
 	 */

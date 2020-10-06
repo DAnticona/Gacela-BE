@@ -19,7 +19,7 @@ public class JwtToken implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60 * 1000;
+	public static final long JWT_TOKEN_VALIDITY = 8 * 60 * 60 * 1000;
 
 	@Value("${jwt.secret}")
 	private String secret;
@@ -73,21 +73,18 @@ public class JwtToken implements Serializable {
 	// compaction of the JWT to a URL-safe string
 	private String generar(Map<String, Object> peticiones, String usuario) {
 
-		return Jwts.builder()
-				.setClaims(peticiones)
-				.setSubject(usuario)
+		return Jwts.builder().setClaims(peticiones).setSubject(usuario)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))
-				.signWith(SignatureAlgorithm.HS512, secret)
-				.compact();
+				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 
 	// validate token
 	public Boolean validateToken(String token, UserDetails userDetails) {
-		
+
 		final String username = this.obtenerUsuario(token);
-		
+
 		return (username.equals(userDetails.getUsername()) && !this.tokenVencido(token));
-		
+
 	}
 }
